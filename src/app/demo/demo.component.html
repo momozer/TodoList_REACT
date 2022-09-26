@@ -1,0 +1,75 @@
+<p>demo works!</p>
+
+
+<!-- interpolation : récupération d'un message provenant de la classe -->
+<p>{{message}}</p> 
+
+<!-- Property binding -->
+<!-- <img src="{{img}}" alt="">  OU -->
+<img [src]="img"> 
+
+<!-- event binding -->
+<div>
+    <button (click)="displayMessage($event)">Press</button>
+</div>
+
+<!-- Two-way data binding (banana in the box) -->
+<div>
+    <input type="text" [(ngModel)] = "message">
+</div>
+
+<!-- Les hash (hashtag)  pour cibler -->
+<div>
+    <input type="text" [value] = "nombre" #number> <!--Je récupére la valeur du input-->
+    <button (click) = "newNumber(number)">CLICK</button>
+</div>
+
+<!-- Les directives:
+    ngClass
+    ngStyle
+    ngModel
+ -->
+<p [ngClass] = "'red'"> message en rouge</p>
+<p [ngClass] ="{
+    'blue': check,
+    'red' : !check    
+}">permutation de la couleur</p>
+
+<button (click)="changeColor()"> change la couleur</button>
+
+<p [ngStyle]="{'backgroundColor':'blue', 'color':'whitesmoke'}">Lorem ipsum dolor sit amet</p>
+
+<p [ngStyle]="{'color': setColor()}">Lorem ipsum dolor sit.</p>
+
+
+<!-- directives structurelles :
+    *ngIf
+    *ngElse 
+    ng-template
+-->
+
+<p *ngIf="check; then vu else pasvu "></p>
+<ng-template #vu>
+    <p>tu me vois</p>
+</ng-template>
+
+<ng-template #pasvu>
+    <p>tu ne me vois plus</p>
+</ng-template>
+
+
+<!-- Les pipes -->
+
+<p>{{ date | date: "dd/MM/yy" }}</p>
+
+<p>{{"salut toi ça va ?" | uppercase}}</p>
+<p>{{"BONJOUR TU VAS BIEN ?" | lowercase}}</p>
+
+
+<!-- Boucle for of -->
+
+<div *ngFor="let item of table; let i = index">
+    <p>{{item.prenom}} {{item.nom | uppercase}}, née le {{item.dateDeNaissance}}
+        index du tableau : {{i}}
+    </p>
+</div>

@@ -1,0 +1,37 @@
+<p>display-users works!</p>
+
+<!--1. nom, prenom, adress, numero de tel, mail = card  -->
+
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div> -->
+
+<div class="card mb-2" style="width: 18rem;" *ngFor="let item of users, let i = index">
+    <div> 
+        <h4 class="card-title">{{item.name}} {{item.username | uppercase}} </h4>
+        <h5>Adresse :</h5>
+        <p *ngIf = "item.check; then pasaffiche else affiche"> </p>
+        <div class="card-body">
+            <ng-template #pasaffiche>
+                <br> {{item.address.suite}} rue {{item.address.street}}
+                <br> {{item.address.city | uppercase}}
+            </ng-template>
+            <ng-template #affiche>
+
+            </ng-template>
+            <h5>Numéro de téléphone:</h5>
+            <br> 
+            <p>{{item.phone}}</p>
+            <h5>Adresse  email:</h5>
+            <br>
+            <p>{{item.email}}</p>
+            <button class="supprimer" (click)="supprimer(i)">Supprimer</button>
+            <button class="afficher" (click)="Afficher(i)">Afficher</button>
+            <br>
+        </div>        
+    </div>
+</div>

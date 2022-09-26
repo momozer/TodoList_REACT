@@ -1,0 +1,17 @@
+<p>to-do-list works!</p>
+
+<div>
+    <label for="todo">Entrez une chose à faire</label>
+</div>
+<div>
+    <input type="text" [(ngModel)]="inputData" (keyup.enter)="add(value)" #value> <button (click)="add(value)">Ajouter</button>
+</div>
+<div *ngIf="todo.length > 0">
+    <ul *ngFor="let to of todo; let i = index">
+        <li>
+            {{to}}
+            <input type="checkbox" [checked]="inputData.to">
+            <button (click)="delete(i)"> Supprimer </button>
+        </li>
+    </ul>
+</div>
